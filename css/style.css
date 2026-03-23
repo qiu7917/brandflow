@@ -85,6 +85,11 @@ li {
     font-size: 14px;
   }
 }
+@media screen and (max-width: 768px) {
+  .cta .btn {
+    width: 250px;
+  }
+}
 .cta .btn-1 {
   background-color: var(--color-2);
   color: var(--white);
@@ -157,7 +162,6 @@ header {
   background-color: rgba(255, 255, 255, 0.9);
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 80px;
 }
 @media screen and (max-width: 425px) {
   header {
@@ -173,12 +177,12 @@ header .container {
 header .container h1 {
   display: flex;
   align-items: center;
-  height: 60px;
+  width: 250px;
 }
 @media screen and (max-width: 425px) {
   header .container h1 {
-    height: 30px;
-    width: auto;
+    width: 125px;
+    height: auto;
   }
 }
 header .container h1 img {
@@ -305,6 +309,11 @@ header .container .hamburger span:nth-child(3) {
     padding: 100px 0 50px 0;
   }
 }
+@media screen and (max-width: 425px) {
+  .fv {
+    margin-top: 50px;
+  }
+}
 .fv .container {
   display: flex;
   flex-direction: column;
@@ -354,6 +363,12 @@ header .container .hamburger span:nth-child(3) {
 @media screen and (max-width: 1100px) {
   .fv .container .fv-text .fv-text-small {
     font-size: 16px;
+  }
+}
+@media screen and (max-width: 425px) {
+  .fv .container .cta .btn-1 {
+    background-color: var(--white);
+    color: #002B5B;
   }
 }
 
@@ -458,6 +473,11 @@ header .container .hamburger span:nth-child(3) {
   font-weight: 700;
   color: var(--color-2);
   margin-bottom: 40px;
+}
+@media screen and (max-width: 425px) {
+  .about .container .about-recommend {
+    font-size: 18px;
+  }
 }
 .about .container .recommend-items {
   display: grid;
@@ -602,6 +622,7 @@ header .container .hamburger span:nth-child(3) {
 @media screen and (max-width: 425px) {
   .casestudy .casestudy-voice {
     margin: 0 0 30px 0;
+    font-size: 18px;
   }
 }
 .casestudy .slick {
@@ -961,6 +982,7 @@ header .container .hamburger span:nth-child(3) {
 @media screen and (max-width: 425px) {
   .faq .container .faq-accordion .faq-accordion-item {
     padding: 20px 50px 20px 20px;
+    margin-bottom: 16px;
   }
 }
 .faq .container .faq-accordion .faq-accordion-item::after {
