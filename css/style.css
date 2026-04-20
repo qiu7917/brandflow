@@ -350,6 +350,7 @@ header .container .hamburger span:nth-child(3) {
   .fv {
     margin-top: 50px;
     padding: 50px 0 50px 0;
+    background: #002B5B;
   }
 }
 .fv .container {
