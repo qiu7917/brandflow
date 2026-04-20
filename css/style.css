@@ -14,6 +14,7 @@ body {
   font-weight: 500;
   font-style: normal;
   font-size: 14px;
+  overflow-x: hidden;
 }
 
 img {
@@ -152,6 +153,44 @@ li {
   .section-title .section-title-en {
     font-size: 48px;
   }
+}
+
+.fadein,
+.leftin,
+.rightin,
+.fadein-step {
+  opacity: 0;
+  transition: all 1s;
+}
+
+.fadein {
+  transform: translateY(50px);
+}
+
+.leftin {
+  transform: translateX(100px);
+}
+
+.rightin {
+  transform: translateX(-100px);
+}
+
+.fadein-step {
+  transform: translateX(-1px);
+}
+.fadein-step:nth-child(1) {
+  transition-delay: 0.5s;
+}
+.fadein-step:nth-child(3) {
+  transition-delay: 1.2s;
+}
+.fadein-step:nth-child(5) {
+  transition-delay: 1.9s;
+}
+
+.is-visible {
+  opacity: 1;
+  transform: translate(0, 0) !important;
 }
 
 header {
@@ -627,6 +666,7 @@ header .container .hamburger span:nth-child(3) {
 }
 .casestudy .slick {
   border-radius: 24px;
+  position: relative;
 }
 .casestudy .slick .slider .slide {
   background-color: var(--white);
@@ -661,23 +701,83 @@ header .container .hamburger span:nth-child(3) {
   color: #3B82F6;
   margin-bottom: 10px;
 }
-.casestudy .slick-track {
-  display: flex !important;
+
+.slick-track {
+  display: flex;
   align-items: stretch;
 }
-.casestudy .slick-dots {
+
+.slider {
+  position: relative;
+}
+.slider .slide-arrow {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  /* 横幅50px */
+  height: 100%;
+  /* スライド（.slick-list）の高さに合わせる */
+  z-index: 10;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  /* 範囲確認用。完成したら消すか透明にする */
+  display: flex;
+  /* 疑似要素を中央に置くため */
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 425px) {
+  .slider .slide-arrow {
+    width: 40px;
+  }
+}
+.slider .slide-arrow::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-top: 3px solid #333;
+  border-left: 3px solid #333;
+  display: block;
+}
+@media screen and (max-width: 425px) {
+  .slider .slide-arrow::before {
+    width: 15px;
+    height: 15px;
+  }
+}
+.slider {
+  /* 左エリア */
+}
+.slider .prev-arrow {
+  left: 0;
+}
+.slider .prev-arrow::before {
+  transform: rotate(-45deg);
+  margin-left: 5px;
+}
+.slider {
+  /* 右エリア */
+}
+.slider .next-arrow {
+  right: 0;
+}
+.slider .next-arrow::before {
+  transform: rotate(135deg);
+  margin-right: 5px;
+}
+.slider .slick-dots {
   bottom: -70px;
 }
-.casestudy .slick-dots li {
+.slider .slick-dots li {
   margin: 0 20px;
   width: 10px;
 }
 @media screen and (max-width: 425px) {
-  .casestudy .slick-dots li {
+  .slider .slick-dots li {
     margin: 0 10px;
   }
 }
-.casestudy .slick-dots li button::before {
+.slider .slick-dots li button::before {
   content: "";
   width: 10px;
   height: 10px;
@@ -685,22 +785,12 @@ header .container .hamburger span:nth-child(3) {
   background: #ccc;
   opacity: 1;
 }
-.casestudy .slick-dots li.slick-active button::before {
+.slider .slick-dots li.slick-active button::before {
   content: "";
   width: 10px;
   height: 10px;
   background: #FDB11E;
   opacity: 1;
-}
-@media screen and (max-width: 425px) {
-  .casestudy .slider .slick-list {
-    padding: 0 !important;
-  }
-  .casestudy .slider .slick-slide {
-    width: calc(100vw - 40px) !important;
-    margin: 0 20px !important;
-    padding: 0 !important;
-  }
 }
 
 .price {

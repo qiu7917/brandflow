@@ -5,7 +5,6 @@ $(function () {
     ===================================================*/
     $(".slider").slick({
         autoplay: true,
-        // autoplay: false,
         autoplaySpeed: 3000,
         infinite: true,
         arrows: true,
@@ -18,9 +17,17 @@ $(function () {
 
         responsive: [
             {
+                breakpoint: 1100,
+                settings: {
+                    slidesToShow: 1,
+                    centerPadding: '20%',
+                }
+            },
+            {
                 breakpoint: 769,
                 settings: {
                     slidesToShow: 1,
+                    centerPadding: '10%',
                 }
             },
             {
@@ -39,17 +46,13 @@ $(function () {
     アコーディオンメニュー
     ===================================================*/
     $('.faq-accordion-item').on('click', function () {
-        // クリックされた li 自体を取得
         var $item = $(this);
-        // その中にある content を探す
         var $content = $item.find('.accordion-content');
 
         if ($item.hasClass('is-active')) {
-            // 【閉じる動作】
             $item.removeClass('is-active');
             $content.stop().slideUp(400);
         } else {
-            // 【開く動作】
             $item.addClass('is-active');
             $content.stop().slideDown(400);
         }
@@ -95,5 +98,22 @@ $(function () {
         let position = target.offset().top - headerHeight;
         $("html, body").animate({ scrollTop: position }, 600, "swing");
         return false;
+    });
+});
+
+
+/*=================================================
+fadein
+===================================================*/
+
+$(window).scroll(function () {
+    $(".fadein, .leftin, .rightin, .fadein-step").each(function () {
+        let scroll = $(window).scrollTop();
+        let target = $(this).offset().top;
+        let windowHeight = $(window).height();
+
+        if (scroll > target - windowHeight + 200) {
+            $(this).addClass("is-visible");
+        }
     });
 });
